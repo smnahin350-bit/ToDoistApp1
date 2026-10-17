@@ -25,6 +25,8 @@ h1 {
 
 form {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
 }
 
@@ -35,6 +37,29 @@ input {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
+}
+
+#task-input {
+  flex: 1 1 100%;
+}
+
+input[type="time"],
+select {
+  flex: 0 0 auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  font: inherit;
+}
+
+input[type="checkbox"] {
+  flex: 0 0 auto;
+}
+
+.field-label {
+  color: #555;
+  font-size: 14px;
 }
 
 button {
@@ -49,6 +74,7 @@ button {
 li {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 12px;
   padding: 12px;
@@ -56,8 +82,31 @@ li {
   border-radius: 6px;
 }
 
-li span {
+.task-text {
   flex: 1;
+  min-width: 120px;
+  overflow-wrap: anywhere;
+}
+
+.task-details,
+.move-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.priority-low { color: #347a48; }
+.priority-medium { color: #8a6500; }
+.priority-high { color: #c0392b; }
+
+.move-button {
+  padding: 6px 10px;
+  background: #667085;
+}
+
+.move-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 li.done span {
@@ -68,4 +117,12 @@ li.done span {
 .delete-button {
   padding: 6px 10px;
   background: #777;
+}
+
+@media (max-width: 520px) {
+  .app { padding: 18px; }
+  #task-form > button { flex: 1 1 100%; }
+  li { gap: 8px; }
+  .task-details { order: 3; flex: 1 1 100%; padding-left: 28px; }
+  .move-controls { margin-left: auto; }
 }
